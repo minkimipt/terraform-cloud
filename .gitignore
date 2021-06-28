@@ -32,3 +32,7 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+# Ignore terraform lock file
+**/.terraform.lock
+# ignore vim tags file
+tags
