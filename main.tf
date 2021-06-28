@@ -69,7 +69,7 @@ resource "github_repository_file" "buildspec" {
 }
 
 module "codepipeline" {
-  source = "./modules/create-aws-codepipeline/"
+  source = "app.terraform.io/minkimipt/codepipeline/aws"
   branch = var.branch
   codebuild_role_name = var.codebuild_role_name
   codepipeline_policy_name = var.codepipeline_policy_name
