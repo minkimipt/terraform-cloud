@@ -1,4 +1,11 @@
 terraform {
+  backend "remote" {
+    organization = "minkimipt"
+
+    workspaces {
+      name = "blog"
+    }
+  }
   required_providers {
     github = {
       source  = "integrations/github"
