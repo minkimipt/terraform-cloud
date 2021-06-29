@@ -90,7 +90,7 @@ resource "github_repository_file" "config" {
   branch              = var.branch
   file                = "config.toml"
   content             = <<-EOF
-    baseurl = "${module.codepipeline.site_url}"
+    baseurl = "http://${module.codepipeline.site_url}"
     contentdir    = "content"
     layoutdir     = "layouts"
     publishdir    = "public"
