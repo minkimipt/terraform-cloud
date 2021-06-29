@@ -98,7 +98,7 @@ resource "github_repository_file" "config" {
     canonifyurls  = true
     
     DefaultContentLanguage = "en"
-    theme = ${var.theme}
+    theme = "${var.theme}"
     metaDataFormat = "yaml"
     pygmentsUseClasses = true
     pygmentCodeFences = true
