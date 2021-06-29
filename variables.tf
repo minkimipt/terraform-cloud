@@ -49,3 +49,8 @@ variable "codepipeline_policy_name" {
 variable "codebuild_role_name" {
   type = string
 }
+
+variable "collaborators" {
+  type = list
+  description = "List of blog repo collaborators"
+}

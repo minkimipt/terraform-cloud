@@ -124,3 +124,10 @@ resource "github_repository_file" "config" {
   commit_email        = "terraform@example.com"
   overwrite_on_create = true
 }
+
+resource "github_repository_collaborator" "collaborators" {
+  repository = data.github_repository.blog_repo.name
+  username   = var.collaborators[count.index]
+  permission = "push"
+  count = length(var.collaborators)
+}
