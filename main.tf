@@ -35,7 +35,7 @@ data "github_repository" "blog_repo" {
 
 resource "github_repository_file" "buildspec" {
   repository          = data.github_repository.blog_repo.name
-  branch              = "main"
+  branch              = var.branch
   file                = "buildspec.yml"
   content             = <<-EOF
   version: 0.2
@@ -87,7 +87,7 @@ module "codepipeline" {
 
 resource "github_repository_file" "config" {
   repository          = data.github_repository.blog_repo.name
-  branch              = "main"
+  branch              = var.branch
   file                = "config.toml"
   content             = <<-EOF
     baseurl = "${module.codepipeline.site_url}"
