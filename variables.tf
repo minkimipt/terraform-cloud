@@ -10,6 +10,10 @@ variable "branch" {
   type = string
 }
 
+variable "theme" {
+  type = string
+}
+
 variable "oauthtoken" {
   type = string
 }

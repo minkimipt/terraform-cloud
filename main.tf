@@ -90,36 +90,89 @@ resource "github_repository_file" "config" {
   branch              = "main"
   file                = "config.toml"
   content             = <<-EOF
-    languageCode = "en-us"
-    title = "Contrail Collateral"
-    baseURL = "${module.codepipeline.site_url}"
-    canonifyURLs = true
-    theme = "cupper"
+    baseurl = "${module.codepipeline.site_url}"
+    contentdir    = "content"
+    layoutdir     = "layouts"
+    publishdir    = "public"
+    title = "Beautiful Hugo"
+    canonifyurls  = true
     
-    [markup]
-      [markup.goldmark]
-        [markup.goldmark.renderer]
-          unsafe = true
+    DefaultContentLanguage = "en"
+    theme = ${var.theme}
+    metaDataFormat = "yaml"
+    pygmentsUseClasses = true
+    pygmentCodeFences = true
     
-    [sitemap]
-      changefreq = "monthly"
-      filename = "sitemap.xml"
-      priority = 0.5
+    [Params]
+      subtitle = "Hugo Blog Template for GitLab Pages"
+      logo = "img/avatar-icon.png"
+      favicon = "img/favicon.ico"
+      dateFormat = "January 2, 2006"
+      commit = false
+      rss = true
+      comments = true
     
-    [params]
-    description = "Reverse Engineering in Practice"
+    [Author]
+      name = "Some Person"
+      email = "youremail@domain.com"
+      facebook = "username"
+      googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
+      gitlab = "username"
+      github = "username"
+      twitter = "username"
+      reddit = "username"
+      linkedin = "username"
+      xing = "username"
+      stackoverflow = "users/XXXXXXX/username"
+      snapchat = "username"
+      instagram = "username"
+      youtube = "user/username" # or channel/channelname
+      soundcloud = "username"
+      spotify = "username"
+      bandcamp = "username"
+      itchio = "username"
+      keybase = "username"
     
-      [params.staticman]
-      api = "https://minkimipt-staticman.herokuapp.com/v3/entry/gitlab/minkimipt/blog-comments/master/comments"
-      enabled = true
-      gitProvider = "gitlab"
-      username = "minkimipt-staticman"
     
-        [params.staticman.recaptcha]
-        sitekey = "6LfNpsgZAAAAALm4RUToqxnT-MppTOsBEsijCxVH"
-        secret = "ShsfOjZdwARINBeIRIprzGnbExYNA5LZ5WTT7+M1qmf2r3/HnpkwWvME2qZD0qswPvVNR5qjw26ebQ6pX//Kvu/1vLcQNDiFrjryRiYWCdjLb2hc8iyWyTYEEAm4rDWfUG/xDbwy9kLILxU+xzisgk8DfuGK9b06zlGoWBfYjY/tYLRl6ufHJhYqwa7te9UHTy02KzSqUVa4ASXenGmN9pckS92+bYuv+9rmqbPEKRF5sjZU3tZL2NgbFrDmopOn8tHVux//WMEdZeh4GciPhKTTjbTpKm3jXkjQ4Jya/IP2Hympye4g35ehkFfrdb7OgMu4TwlIAHfPLzE/H+IFKg=="
+    [[menu.main]]
+        name = "Blog"
+        url = ""
+        weight = 1
+    
+    [[menu.main]]
+        name = "About"
+        url = "page/about/"
+        weight = 3
+    
+    [[menu.main]]
+        identifier = "samples"
+        name = "Samples"
+        weight = 2
+    
+    [[menu.main]]
+        parent = "samples"
+        name = "Big Image Sample"
+        url = "post/2017-03-07-bigimg-sample"
+        weight = 1
+    
+    [[menu.main]]
+        parent = "samples"
+        name = "Math Sample"
+        url = "post/2017-03-05-math-sample"
+        weight = 2
+    
+    [[menu.main]]
+        parent = "samples"
+        name = "Code Sample"
+        url = "post/2016-03-08-code-sample"
+        weight = 3
+    
+    [[menu.main]]
+        name = "Tags"
+        url = "tags"
+        weight = 3
   EOF
-  commit_message      = "Adjusting sit URL in config.toml based on S3 bucket website"
+  commit_message      = "Adjusting site URL and theme in config.toml from Terraform"
   commit_author       = "Terraform User"
   commit_email        = "terraform@example.com"
   overwrite_on_create = true
