@@ -47,7 +47,7 @@ resource "github_repository_file" "buildspec" {
       commands:
         - apt-get update
         - echo Installing hugo
-        - curl -L -o hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.84.1/hugo_0.84.1_Linux-64bit.deb
+        - curl -L -o hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.74.3/hugo_0.74.3_Linux-64bit.deb
         - dpkg -i hugo.deb
     pre_build:
       commands:
